@@ -2,6 +2,8 @@
     "files.associations": {
         "queue": "cpp",
         "iostream": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "memory_resource": "cpp",
+        "scoped_allocator": "cpp"
     }
 }

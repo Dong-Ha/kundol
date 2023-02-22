@@ -1,15 +1,27 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
-int a[100];
+int m = 3;
+void combi(int k, vector<int> v){
+    if(v.size() == 3){
+        for(int i : v){
+            cout << i << ' ';
+        }
+        cout << '\n';
+        return ;
+    }
+    for(int i = k + 1; i < 5; i++){
+        v.push_back(i);
+        combi(i, v);
+        v.pop_back();
+    }
+
+}
 
 int main(){
 
-    cout << &a[0] <<'\n';
-    cout << &a[1] <<'\n';
-
-    cout << &a[0] + 1 << '\n';
-
+    vector<int> v;
+    combi(-1, v);
+    
     return 0;
 }
