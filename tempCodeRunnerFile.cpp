@@ -20,8 +20,9 @@ void combi(int k, vector<int> v){
 
 int main(){
 
-    vector<int> v;
-    combi(-1, v);
-    
+    vector<int> v1, v2;
+    v1.push_back(1);
+    v2 = v1;
+    cout << &v1 << ' ' << &v2 << '\n';
     return 0;
 }
