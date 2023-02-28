@@ -1,28 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int m = 3;
-void combi(int k, vector<int> v){
-    if(v.size() == 3){
-        for(int i : v){
-            cout << i << ' ';
-        }
-        cout << '\n';
-        return ;
-    }
-    for(int i = k + 1; i < 5; i++){
-        v.push_back(i);
-        combi(i, v);
-        v.pop_back();
-    }
-
-}
+vector<int> v;
 
 int main(){
 
-    vector<int> v1, v2;
-    v1.push_back(1);
-    v2 = v1;
-    cout << &v1 << ' ' << &v2 << '\n';
+    v.push_back(1);
+    v.push_back(3);
+    v.push_back(2);
+
+    sort(v.begin(), v.end());
+
+    int k = *v.begin();
+    int j = *(v.end() - 1);
+
+    cout << k << '\n' << j << '\n';
+
     return 0;
 }
