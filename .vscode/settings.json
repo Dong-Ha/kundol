@@ -4,6 +4,7 @@
         "iostream": "cpp",
         "vector": "cpp",
         "memory_resource": "cpp",
-        "scoped_allocator": "cpp"
+        "scoped_allocator": "cpp",
+        "cmath": "cpp"
     }
 }
