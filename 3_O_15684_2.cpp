@@ -5,7 +5,8 @@
 using namespace std;
 
 int n, m, h, a, b, ret = 10000;
-int _mp[11][31] ={0, };
+int _mp[31][11] ={0, };
+int hubo[10] = {0, };
 
 void Solve(int aa, int bb, int now_line);
 
@@ -15,9 +16,10 @@ int main(){
     for(int i = 0; i < m; ++i){
         cin >> a >> b;
         --a; --b;
-        _mp[b][a] = DOWN;
-        _mp[b+1][a] = UP;
+        _mp[a][b] = DOWN;
+        _mp[a][b+1] = UP;
     }
+
 
     Solve(0, 0, 0);
 
@@ -27,7 +29,7 @@ int main(){
 }
 
 bool Check(int aa, int bb){
-    if(NO == _mp[bb][aa] && NO == _mp[bb + 1][aa]) return true;
+    if(NO == _mp[aa][bb] && NO == _mp[aa][bb + 1]) return true;
     else return false;
 }
 
@@ -36,13 +38,13 @@ void Test(int now_line){
     for(int i = 0; i < n; ++i){
         int next_i = i;
         for(int j = 0; j < h; ++j){
-            if(_mp[next_i][j] == NO) continue;
-            else if (_mp[next_i][j] == DOWN) ++next_i;
-            else if (_mp[next_i][j] == UP) --next_i;
+            if(_mp[j][next_i] == NO) continue;
+            else if (_mp[j][next_i] == DOWN) ++next_i;
+            else if (_mp[j][next_i] == UP) --next_i;
         }
         if(i == next_i){
             ++flag;
-        }
+        } else break;
     }
     if(flag == n - 1) ret = min(ret, now_line);
 }
@@ -50,17 +52,17 @@ void Test(int now_line){
 void Solve(int aa, int bb, int now_line){
     if(4 < now_line) return ;
     if(n - 1 < bb) return ;
-    if(now_line >= ret) return;
+
     if(h <= aa) aa = 0, ++bb;
     
     
     if(Check(aa, bb)){
-        _mp[bb][aa] = DOWN;
-        _mp[bb+1][aa] = UP; 
+        _mp[aa][bb] = DOWN;
+        _mp[aa][bb+1] = UP; 
         Test(now_line);
         Solve(aa + 1, bb, now_line + 1);
-        _mp[bb][aa] = NO;
-        _mp[bb+1][aa] = NO;
+        _mp[aa][bb] = NO;
+        _mp[aa][bb+1] = NO;
         Test(now_line);
         Solve(aa + 1, bb, now_line);
     }else{
