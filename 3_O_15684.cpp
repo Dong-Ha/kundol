@@ -40,9 +40,7 @@ void Test(int now_line){
             else if (_mp[next_i][j] == DOWN) ++next_i;
             else if (_mp[next_i][j] == UP) --next_i;
         }
-        if(i == next_i){
-            ++flag;
-        }
+        if(i == next_i) ++flag;
     }
     if(flag == n - 1) ret = min(ret, now_line);
 }
