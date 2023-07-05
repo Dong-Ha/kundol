@@ -41,7 +41,7 @@ int main(){
                 if(a[j] & (1 << i)) ;
                 else ++tmp;
             }
-            if(tmp >= m){
+            if(tmp > m){
                 m = tmp;
                 idx = i;
                 flag = 1;
@@ -50,9 +50,13 @@ int main(){
 
         if(m <= n / 2)
         { 
-            if(cnt != n)break;
+            if(cnt == n){
+                if(2 == n) ret = 0;
+                else if(3 == n) --ret;
+            }
+            
             break;
-            //else idx = (++idx) % n ,flag ^= 1;
+            
         }
 
         if(flag){ // column
