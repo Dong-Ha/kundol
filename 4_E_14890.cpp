@@ -33,21 +33,21 @@ int main(){
                     increase = 0;
                     break;
                 }else{
-                    for(int k = j; k > j - L; --k){
+                    for(int k = j - 1; k > j - L - 1; --k){
                         if(b[i][k]){
                             increase = 0;
                             break;
                         }
                     }
                     if(!increase) break;
-                    for(int k = j; k > j - L; --k){
+                    for(int k = j - 1; k > j - L - 1; --k){
                         b[i][k] = 1;
                     }
                     cnt = 1; flag = 0;
                 }
             }else if(m[i][j] < now){
                 if(L == 1){
-                    b[i][j + 1] = 1;
+                    b[i][j] = 1;
                     cnt = 1; flag = 0;
                     now = m[i][j];
                     continue;
@@ -67,10 +67,10 @@ int main(){
 
                     }
                     if(!increase) break;
-                    for(int k = j + 1; k < j + L; ++k){
+                    for(int k = j; k < j + L; ++k){
                         b[i][k] = 1;
                     }
-                    j = j + L;
+                    j = j + L - 1;
                     cnt = 1; flag = 0;
                 }
             }
@@ -78,6 +78,7 @@ int main(){
             now = m[i][j];
         }
         if(increase)++ret;
+      //  else cout <<"abc" << i << '\n';
     }
     #endif
     // 초기화
@@ -101,21 +102,21 @@ int main(){
                     increase = 0;
                     break;
                 }else{
-                    for(int k = j; k > j - L; --k){
+                    for(int k = j - 1; k > j - L - 1; --k){
                         if(b[k][i]){
                             increase = 0;
                             break;
                         }
                     }
                     if(!increase) break;
-                    for(int k = j; k > j - L; --k){
+                    for(int k = j - 1; k > j - L - 1; --k){
                         b[k][i] = 1;
                     }
                     cnt = 1; flag = 0;
                 }
             }else if(m[j][i] < now){
                 if(L == 1){
-                    b[j + 1][i] = 1;
+                    b[j][i] = 1;
                     cnt = 1; flag = 0;
                     now = m[j][i];
                     continue;
@@ -135,7 +136,7 @@ int main(){
 
                     }
                     if(!increase) break;
-                    for(int k = j + 1; k < j + L; ++k){
+                    for(int k = j; k < j + L; ++k){
                         b[k][i] = 1;
                     }
                     j = j + L - 1;
